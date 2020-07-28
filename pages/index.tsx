@@ -1,11 +1,13 @@
 import React from 'react'
+import AdminScreen from '~/app/screens/admin.screen'
+import AdminLayout from '~/app/layout/admin.layout'
 
-const indexPage: React.FC = () => {
+const IndexPage: React.FC = () => {
 	return (
-		<React.Fragment>
-			<h1>Protected route</h1>
-		</React.Fragment>
+		<AdminLayout>
+			<AdminScreen />
+		</AdminLayout>
 	)
 }
 
-export default indexPage
+export default IndexPage
