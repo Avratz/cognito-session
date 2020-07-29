@@ -1,4 +1,5 @@
 import React from 'react'
+import PropTypes from 'prop-types'
 import Head from 'next/head'
 
 import { META } from '../constants/config'
@@ -16,6 +17,10 @@ const AdminLayout: React.FC<{ children: React.ReactNode }> = ({ children }) => {
 			{children}
 		</>
 	)
+}
+
+AdminLayout.propTypes = {
+	children: PropTypes.node,
 }
 
 export default AdminLayout
