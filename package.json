@@ -1,20 +1,21 @@
 {
-  "name": "cognito",
-  "version": "0.1.0",
-  "private": true,
-  "scripts": {
-    "dev": "next dev",
-    "build": "next build",
-    "start": "next start"
-  },
-  "dependencies": {
-    "@types/react-dom": "^16.9.8",
-    "next": "9.5.0",
-    "react": "16.13.1",
-    "react-dom": "16.13.1"
-  },
-  "devDependencies": {
-    "@types/react": "^16.9.43",
-    "typescript": "^3.9.7"
-  }
+	"name": "cognito",
+	"version": "0.1.0",
+	"private": true,
+	"scripts": {
+		"dev": "next dev",
+		"build": "next build",
+		"start": "next start"
+	},
+	"dependencies": {
+		"@aws-amplify/auth": "^3.3.3",
+		"next": "9.5.0",
+		"react": "16.13.1",
+		"react-dom": "16.13.1"
+	},
+	"devDependencies": {
+		"@types/react": "^16.9.43",
+		"@types/react-dom": "^16.9.8",
+		"typescript": "^3.9.7"
+	}
 }

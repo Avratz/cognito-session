@@ -13,9 +13,11 @@ const AuthScreen = (props) => {
 	//login.screen, signup.screen or resetPassword.screen
 	return (
 		<React.Fragment>
-			{screen === 'LoginScreen' && <LoginScreen />}
-			{screen === 'SignupScreen' && <SignUpScreen />}
-			{screen === 'ResetPasswordScreen' && <ResetPasswordScreen />}
+			{screen === 'LoginScreen' && <LoginScreen routing={setScreen} />}
+			{screen === 'SignupScreen' && <SignUpScreen routing={setScreen} />}
+			{screen === 'ResetPasswordScreen' && (
+				<ResetPasswordScreen routing={setScreen} />
+			)}
 		</React.Fragment>
 	)
 }
