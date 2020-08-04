@@ -1,37 +1,37 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import Link from 'next/link'
 
 import styles from './Custombutton.module.scss'
 
 interface ButtonProps {
 	children: React.ReactNode
-	handleClick?: () => void
-	href?: string
-	as?: string
 	margin?: string
+	type?: 'button' | 'submit' | 'reset'
+	handleClick?: () => void
 }
 
 const Button: React.FC<ButtonProps> = (props) => {
 	return (
-		<Link href={props.href || '#'} as={props.as}>
-			<a className={styles.customButton} onClick={props.handleClick}>
-				{props.children}
-				<style jsx>{`
-					a {
-						margin: ${props.margin || '1rem auto'};
-					}
-				`}</style>
-			</a>
-		</Link>
+		<button
+			className={styles.customButton}
+			type={props.type ? props.type : 'button'}
+			onClick={props.handleClick ? () => props.handleClick() : null}
+		>
+			{props.children}
+
+			<style jsx>{`
+				button {
+					margin: ${props.margin || '1rem auto'};
+				}
+			`}</style>
+		</button>
 	)
 }
 
 Button.propTypes = {
 	children: PropTypes.node.isRequired,
-	handleClick: PropTypes.func,
-	href: PropTypes.string,
-	as: PropTypes.string,
+	margin: PropTypes.string,
+	type: PropTypes.any,
 }
 
 export default Button

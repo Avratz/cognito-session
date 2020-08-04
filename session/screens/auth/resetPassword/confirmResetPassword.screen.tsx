@@ -8,18 +8,21 @@ import Input from '~/ui/inputs/input/input.component'
 import Button from '~/ui/buttons/button/button.component'
 import Flex from '~/ui/structure/flex/flex.component'
 import Form from '~/ui/forms/form.component'
-import ALink from '~/ui/links/link/link.component'
 
-const LoginScreen: React.FC<{
+const ConfirmResetPasswordScreen: React.FC<{
 	routing: React.Dispatch<React.SetStateAction<string>>
 }> = ({ routing }) => {
-	const [user, setUser] = React.useState({ username: '', password: '' })
-
+	const [user, setUser] = React.useState({
+		username: '',
+		code: '',
+		password: '',
+	})
 	const handleSubmit = async (event) => {
 		event.preventDefault()
 		try {
-			const { username, password } = user
-			await api.signIn(username, password)
+			const { username, code, password } = user
+			await api.forgotPasswordSubmit(username, code, password)
+			routing('LoginScreen')
 		} catch (err) {
 			console.error(err)
 		}
@@ -39,7 +42,7 @@ const LoginScreen: React.FC<{
 			width='25vw'
 			minHeight='50vh'
 		>
-			<Header1 align='center'>Iniciar Sesion</Header1>
+			<Header1 align='center'>Confirma el reseteo de tu contraseña</Header1>
 
 			<Form
 				display='flex'
@@ -49,35 +52,36 @@ const LoginScreen: React.FC<{
 			>
 				<Input
 					name='username'
-					id='user'
-					placeholder='Tu Usuario o Email'
+					type='text'
+					id='username'
+					placeholder='Ingresa tu nombre de usuario'
+					handleChange={handleChange}
+				/>
+				<Input
+					name='code'
+					type='text'
+					id='code'
+					placeholder='Ingresa el codigo que recibiste en tu Email'
 					handleChange={handleChange}
 				/>
 				<Input
 					name='password'
 					type='password'
 					id='password'
-					placeholder='Tu contraseña'
+					placeholder='Ingresa una nueva contraseña'
 					handleChange={handleChange}
 				/>
 
-				<ALink routing={() => routing('ResetPasswordScreen')}>
-					¿Olvidaste tu contraseña?
-				</ALink>
-
 				<Button type='submit' margin='3rem auto 1rem'>
-					Inicia Sesion
+					Confirmar
 				</Button>
 			</Form>
-			<ALink routing={() => routing('SignupScreen')}>
-				¿No tenés cuenta? ¡Creala ahora!
-			</ALink>
 		</Flex>
 	)
 }
 
-LoginScreen.propTypes = {
+ConfirmResetPasswordScreen.propTypes = {
 	routing: PropTypes.func.isRequired,
 }
 
-export default LoginScreen
+export default ConfirmResetPasswordScreen

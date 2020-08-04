@@ -1,8 +1,8 @@
 import amplify from '~/aws/amplify'
 
 export default {
-	signUp: (username: string, password: string) =>
-		amplify.Auth.signUp({ username, password, attributes: {} }),
+	signUp: (username: string, password: string, attributes: {}) =>
+		amplify.Auth.signUp({ username, password, attributes }),
 	signIn: (username: string, password: string) =>
 		amplify.Auth.signIn({ username, password }),
 	signOut: () => amplify.Auth.signOut(),

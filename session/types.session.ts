@@ -8,3 +8,8 @@ export interface cUser {
 }
 
 export type HubCallback = HubCallbk
+
+export interface Context {
+	state: cUser
+	actions: { signOut: () => Promise<void> }
+}

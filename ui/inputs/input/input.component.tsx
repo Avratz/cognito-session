@@ -10,6 +10,7 @@ interface InputProps {
 	id: string
 	placeholder: string
 	margin?: StrOrNum
+	handleChange?: (event: React.ChangeEvent<HTMLInputElement>) => void
 }
 
 const Input: React.FC<InputProps> = (props) => (
@@ -20,6 +21,9 @@ const Input: React.FC<InputProps> = (props) => (
 			id={props.id}
 			className={styles.input}
 			placeholder={props.placeholder}
+			onChange={
+				props.handleChange ? (event) => props.handleChange(event) : null
+			}
 		/>
 
 		<style jsx>{`

@@ -15,13 +15,13 @@ interface FormProps {
 	align?: AlignItemsProperty
 	width?: StrOrNum
 	height?: StrOrNum
+	handleSubmit?: (event: React.FormEvent<HTMLFormElement>) => void
 }
 
 const Form: React.FC<FormProps> = (props) => {
 	return (
-		<form>
+		<form onSubmit={(event) => props.handleSubmit(event)}>
 			{props.children}
-
 			<style jsx>{`
 				form {
 					display: ${props.display || 'block'};
@@ -44,6 +44,7 @@ Form.propTypes = {
 	align: PropTypes.string,
 	width: PropTypes.oneOfType([PropTypes.number, PropTypes.string]),
 	height: PropTypes.oneOfType([PropTypes.number, PropTypes.string]),
+	handleSubmit: PropTypes.func,
 }
 
 export default Form

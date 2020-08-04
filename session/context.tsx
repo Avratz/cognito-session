@@ -3,9 +3,9 @@ import PropTypes from 'prop-types'
 
 import api from './api/client'
 import AuthScreen from './screens/auth/auth.screen'
-import { cUser, HubCallback } from './types.session'
+import { Context, cUser, HubCallback } from './types.session'
 
-const SessionContext = React.createContext({})
+const SessionContext = React.createContext({} as Context)
 
 const SessionProvider: React.FC<{
 	children: React.ReactNode
@@ -32,20 +32,26 @@ const SessionProvider: React.FC<{
 	React.useEffect(() => {
 		const getCurrentSessionAndUser = async () => {
 			try {
-				const currentSession = await api.currentSession()
 				const currentUser = await api.currentUser()
 				setUser({
-					name: currentUser.name,
-					token: currentSession.getAccessToken(),
+					name: currentUser.username,
+					token: currentUser.signInUserSession.accessToken,
 				})
-				console.log(user)
 			} catch (err) {
 				console.error(err)
 			}
 		}
 
 		getCurrentSessionAndUser()
-	}, [user])
+	}, [])
+
+	const signOut = async () => {
+		try {
+			await api.signOut()
+		} catch (err) {
+			console.error(err)
+		}
+	}
 
 	React.useEffect(() => {
 		api.hub.listen('auth', authListener)
@@ -57,8 +63,14 @@ const SessionProvider: React.FC<{
 		return <AuthScreen />
 	}
 	//else show the children,
+
+	const state = user
+	const actions = { signOut }
+
 	return (
-		<SessionContext.Provider value={{}}>{children}</SessionContext.Provider>
+		<SessionContext.Provider value={{ state, actions }}>
+			{children}
+		</SessionContext.Provider>
 	)
 }
 

@@ -4,7 +4,7 @@ import Link from 'next/link'
 
 interface ALinkProps {
 	children: React.ReactNode
-	handleClick?: () => void
+	routing?: () => void
 	href?: string
 	as?: string
 	margin?: string
@@ -13,7 +13,7 @@ interface ALinkProps {
 const ALink: React.FC<ALinkProps> = (props) => {
 	return (
 		<Link href={props.href || '#'} as={props.as}>
-			<a onClick={props.handleClick}>
+			<a onClick={props.routing}>
 				{props.children}
 				<style jsx>{`
 					a {
@@ -28,7 +28,7 @@ const ALink: React.FC<ALinkProps> = (props) => {
 ALink.propTypes = {
 	children: PropTypes.node.isRequired,
 	href: PropTypes.string,
-	handleClick: PropTypes.func,
+	routing: PropTypes.func,
 	as: PropTypes.string,
 }
 
