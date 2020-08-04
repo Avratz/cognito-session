@@ -31,6 +31,12 @@ const LoginScreen: React.FC<{
 			return { ...prevUser, [event.target.name]: event.target.value }
 		})
 	}
+
+	/*
+		**todo
+		- Signin with Federated identities
+		- Handle Errors
+	*/
 	return (
 		<Flex
 			direction='column'
