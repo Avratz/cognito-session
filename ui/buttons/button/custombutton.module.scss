@@ -1,0 +1,32 @@
+@import '../../../styles/variables';
+
+.customButton {
+	min-width: 150px;
+	max-width: 250px;
+	width: auto;
+	text-align: center;
+	background: none;
+	color: white;
+	font-size: 1.2rem;
+	border: 2px solid $LightGray;
+	border-radius: 32px;
+	padding: 0.5rem 1rem;
+	text-transform: uppercase;
+	cursor: pointer;
+	&:hover {
+		background: $White;
+		color: $BackgroundMain;
+		border: 2px solid $White;
+	}
+}
+
+.customButtonBgWhite {
+	@extend .customButton;
+	background: #ece6fe;
+	color: $Primary;
+	border: 2px solid #ece6fe;
+	&:hover {
+		background: $Primary;
+		color: white;
+	}
+}

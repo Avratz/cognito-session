@@ -8,7 +8,7 @@ import AdminScreen from '~/app/screens/admin.screen'
 const IndexPage: React.FC = () => {
 	return (
 		<AdminLayout>
-			<SessionProvider>
+			<SessionProvider isProtected>
 				<AdminScreen />
 			</SessionProvider>
 		</AdminLayout>

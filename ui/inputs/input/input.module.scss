@@ -1,0 +1,21 @@
+@import '../../../styles/variables';
+
+.input {
+	z-index: 9999999999999;
+	position: relative;
+	background: none;
+	border: none;
+	outline: none;
+	border-bottom: solid 1px $LightGray;
+	color: white;
+	padding: 0.7rem;
+	display: none;
+	width: 100%;
+	&:focus {
+		border-bottom: solid 1px $Primary;
+	}
+	@media (min-width: 768px) {
+		display: initial;
+		width: 400px;
+	}
+}
