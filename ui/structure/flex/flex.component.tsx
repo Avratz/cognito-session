@@ -15,6 +15,7 @@ interface FlexProps {
 	width?: StrOrNum
 	height?: StrOrNum
 	minHeight?: StrOrNum
+	padding?: StrOrNum
 }
 
 const Flex: React.FC<FlexProps> = (props) => {
@@ -31,6 +32,7 @@ const Flex: React.FC<FlexProps> = (props) => {
 					width: ${props.width || 'auto'};
 					height: ${props.height || 'auto'};
 					min-height: ${props.minHeight || 'auto'};
+					padding: ${props.padding || '0'};
 				}
 			`}</style>
 		</div>
@@ -45,6 +47,7 @@ Flex.propTypes = {
 	width: PropTypes.oneOfType([PropTypes.number, PropTypes.string]),
 	height: PropTypes.oneOfType([PropTypes.number, PropTypes.string]),
 	minHeight: PropTypes.oneOfType([PropTypes.number, PropTypes.string]),
+	padding: PropTypes.oneOfType([PropTypes.number, PropTypes.string]),
 }
 
 export default Flex

@@ -32,9 +32,19 @@ const LoginScreen: React.FC<{
 		})
 	}
 
+	const signInWithGoogle = async () => {
+		try {
+			const algo = await api.federatedSignIn({
+				provider: 'Google',
+			})
+			console.log(algo)
+		} catch (err) {
+			console.error(err)
+		}
+	}
 	/*
 		**todo
-		- Signin with Federated identities
+		- Signin with Federated identities ✔️
 		- Handle Errors
 	*/
 	return (
@@ -44,9 +54,24 @@ const LoginScreen: React.FC<{
 			align='center'
 			width='25vw'
 			minHeight='50vh'
+			padding='3rem 0 '
 		>
-			<Header1 align='center'>Iniciar Sesion</Header1>
-
+			<Header1 align='center' margin='0 0 3rem'>
+				Iniciar Sesion
+			</Header1>
+			<Button handleClick={signInWithGoogle}>Ingresa con google</Button>
+			<div style={{ width: '100%', textAlign: 'center', padding: '2rem' }}>
+				<hr style={{ top: '20px', position: 'relative' }} />
+				<span
+					style={{
+						backgroundColor: 'black',
+						position: 'relative',
+						padding: '1rem',
+					}}
+				>
+					O
+				</span>
+			</div>
 			<Form
 				display='flex'
 				direction='column'
@@ -56,7 +81,7 @@ const LoginScreen: React.FC<{
 				<Input
 					name='username'
 					id='user'
-					placeholder='Tu Usuario o Email'
+					placeholder='Tu Usuario'
 					handleChange={handleChange}
 				/>
 				<Input

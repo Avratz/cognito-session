@@ -4,7 +4,8 @@ import { TextAlignProperty } from 'csstype'
 
 interface H1Props {
 	children: React.ReactNode
-	align: TextAlignProperty
+	align?: TextAlignProperty
+	margin?: string
 }
 
 const Header1: React.FC<H1Props> = (props) => {
@@ -15,6 +16,7 @@ const Header1: React.FC<H1Props> = (props) => {
 				h1 {
 					color: white;
 					text-align: ${props.align || 'left'};
+					margin: ${props.margin || 'inherit'};
 				}
 			`}</style>
 		</h1>
@@ -24,6 +26,7 @@ const Header1: React.FC<H1Props> = (props) => {
 Header1.propTypes = {
 	children: PropTypes.node.isRequired,
 	align: PropTypes.any,
+	margin: PropTypes.string,
 }
 
 export default Header1

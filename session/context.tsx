@@ -12,6 +12,7 @@ const SessionProvider: React.FC<{
 	isProtected: boolean
 }> = ({ children, isProtected }) => {
 	const [user, setUser] = React.useState<cUser | null>(null)
+	const [loading, setLoading] = React.useState(true)
 
 	const authListener: HubCallback = ({ payload: { event, data } }) => {
 		switch (event) {
@@ -20,6 +21,7 @@ const SessionProvider: React.FC<{
 					name: data.username,
 					token: data.signInUserSession.accessToken,
 				})
+				setLoading(false)
 				break
 			case 'signOut':
 				setUser(null)
@@ -40,6 +42,7 @@ const SessionProvider: React.FC<{
 			} catch (err) {
 				console.error(err)
 			}
+			setLoading(false)
 		}
 
 		getCurrentSessionAndUser()
@@ -58,10 +61,15 @@ const SessionProvider: React.FC<{
 		return () => api.hub.remove('auth', authListener)
 	}, [])
 
+	//if loading
+	if (loading) {
+		return <p>Cargando...</p>
+	}
 	//if !login
 	if (!user && isProtected) {
 		return <AuthScreen />
 	}
+
 	//else show the children,
 
 	const state = user

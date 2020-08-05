@@ -15,4 +15,5 @@ export default {
 		listen: (channel, callback) => amplify.Hub.listen(channel, callback), //missing types
 		remove: (channel, callback) => amplify.Hub.remove(channel, callback),
 	},
+	federatedSignIn: (provider) => amplify.Auth.federatedSignIn(provider),
 }
