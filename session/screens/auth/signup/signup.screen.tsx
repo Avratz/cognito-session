@@ -14,7 +14,7 @@ const SingupScreen: React.FC<{
 	routing: React.Dispatch<React.SetStateAction<string>>
 }> = ({ routing }) => {
 	const [user, setUser] = React.useState({
-		name: '',
+		fullName: '',
 		userName: '',
 		email: '',
 		password: '',
@@ -23,8 +23,8 @@ const SingupScreen: React.FC<{
 	const handleSubmit = async (event) => {
 		event.preventDefault()
 		try {
-			const { name, userName, email, password } = user
-			const attributes = { email, name }
+			const { fullName, userName, email, password } = user
+			const attributes = { email, name: fullName }
 			await api.signUp(userName, password, attributes)
 			routing('LoginScreen')
 		} catch (err) {
