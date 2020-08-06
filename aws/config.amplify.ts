@@ -7,7 +7,7 @@ export default {
 		IdentityPoolId: process.env.IDENTITY_POOL_ID,
 		oauth: {
 			domain: process.env.DOMAIN,
-			scope: ['email', 'profile', 'openid'],
+			scope: ['email', 'profile', 'openid', 'aws.cognito.signin.user.admin'],
 			redirectSignIn: process.env.REDIRECT_SIGNIN,
 			redirectSignOut: process.env.REDIRECT_SIGNOUT,
 			responseType: 'code',

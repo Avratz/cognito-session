@@ -11,6 +11,7 @@ export default {
 		amplify.Auth.forgotPasswordSubmit(username, code, password),
 	currentSession: () => amplify.Auth.currentSession(),
 	currentUser: () => amplify.Auth.currentAuthenticatedUser(),
+	userInfo: () => amplify.Auth.currentUserInfo(), // only works for cognito users :/
 	hub: {
 		listen: (channel, callback) => amplify.Hub.listen(channel, callback), //missing types
 		remove: (channel, callback) => amplify.Hub.remove(channel, callback),

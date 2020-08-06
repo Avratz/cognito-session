@@ -14,12 +14,14 @@ const SessionProvider: React.FC<{
 	const [user, setUser] = React.useState<cUser | null>(null)
 	const [loading, setLoading] = React.useState(true)
 
-	const authListener: HubCallback = ({ payload: { event, data } }) => {
+	const authListener: HubCallback = async ({ payload: { event, data } }) => {
 		switch (event) {
 			case 'signIn':
+				const moreInfo = await api.userInfo()
 				setUser({
 					name: data.username,
 					token: data.signInUserSession.accessToken,
+					moreInfo,
 				})
 				setLoading(false)
 				break
@@ -35,9 +37,11 @@ const SessionProvider: React.FC<{
 		const getCurrentSessionAndUser = async () => {
 			try {
 				const currentUser = await api.currentUser()
+				const moreInfo = await api.userInfo()
 				setUser({
 					name: currentUser.username,
 					token: currentUser.signInUserSession.accessToken,
+					moreInfo,
 				})
 			} catch (err) {
 				console.error(err)

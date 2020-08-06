@@ -5,6 +5,7 @@ export type User = CognitoUser
 export interface cUser {
 	name: User
 	token: CognitoAccessToken
+	moreInfo: any
 }
 
 export type HubCallback = HubCallbk

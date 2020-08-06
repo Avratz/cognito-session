@@ -46,6 +46,7 @@ const LoginScreen: React.FC<{
 		**todo
 		- Signin with Federated identities ✔️
 		- Handle Errors
+		- Build User Profile
 	*/
 	return (
 		<Flex
