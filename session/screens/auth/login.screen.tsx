@@ -6,7 +6,6 @@ import api from '~/session/api/client'
 import Header1 from '~/ui/headers/h1/h1.component'
 import Input from '~/ui/inputs/input/input.component'
 import Button from '~/ui/buttons/button/button.component'
-import Flex from '~/ui/structure/flex/flex.component'
 import Form from '~/ui/forms/form.component'
 import ALink from '~/ui/links/link/link.component'
 
@@ -49,14 +48,7 @@ const LoginScreen: React.FC<{
 		- Build User Profile
 	*/
 	return (
-		<Flex
-			direction='column'
-			justify='center'
-			align='center'
-			width='25vw'
-			minHeight='50vh'
-			padding='3rem 0 '
-		>
+		<React.Fragment>
 			<Header1 align='center' margin='0 0 3rem'>
 				Iniciar Sesion
 			</Header1>
@@ -104,7 +96,7 @@ const LoginScreen: React.FC<{
 			<ALink routing={() => routing('SignupScreen')}>
 				¿No tenés cuenta? ¡Creala ahora!
 			</ALink>
-		</Flex>
+		</React.Fragment>
 	)
 }
 

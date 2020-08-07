@@ -6,7 +6,6 @@ import api from '~/session/api/client'
 import Header1 from '~/ui/headers/h1/h1.component'
 import Input from '~/ui/inputs/input/input.component'
 import Button from '~/ui/buttons/button/button.component'
-import Flex from '~/ui/structure/flex/flex.component'
 import Form from '~/ui/forms/form.component'
 
 const ResetPasswordScreen: React.FC<{
@@ -28,13 +27,7 @@ const ResetPasswordScreen: React.FC<{
 		setUsername(event.target.value)
 	}
 	return (
-		<Flex
-			direction='column'
-			justify='center'
-			align='center'
-			width='25vw'
-			minHeight='50vh'
-		>
+		<React.Fragment>
 			<Header1 align='center'>Reseteá tu contraseña</Header1>
 
 			<Form
@@ -55,7 +48,7 @@ const ResetPasswordScreen: React.FC<{
 					Resetear Contraseña
 				</Button>
 			</Form>
-		</Flex>
+		</React.Fragment>
 	)
 }
 

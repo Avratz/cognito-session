@@ -1,5 +1,5 @@
 @import '../../../styles/variables';
-
+@import '../../../styles/mixins';
 .input {
 	z-index: 9999999999999;
 	position: relative;
@@ -9,12 +9,11 @@
 	border-bottom: solid 1px $LightGray;
 	color: white;
 	padding: 0.7rem;
-	display: none;
-	width: 100%;
+	width: 250px;
 	&:focus {
 		border-bottom: solid 1px $Primary;
 	}
-	@media (min-width: 768px) {
+	@include breakpoint-tablet() {
 		display: initial;
 		width: 400px;
 	}

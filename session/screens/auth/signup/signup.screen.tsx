@@ -6,7 +6,7 @@ import api from '~/session/api/client'
 import Header1 from '~/ui/headers/h1/h1.component'
 import Input from '~/ui/inputs/input/input.component'
 import Button from '~/ui/buttons/button/button.component'
-import Flex from '~/ui/structure/flex/flex.component'
+
 import Form from '~/ui/forms/form.component'
 import ALink from '~/ui/links/link/link.component'
 
@@ -40,13 +40,7 @@ const SingupScreen: React.FC<{
 	}
 
 	return (
-		<Flex
-			direction='column'
-			justify='center'
-			align='center'
-			width='25vw'
-			minHeight='50vh'
-		>
+		<React.Fragment>
 			<Header1 align='center'>Crea tu cuenta</Header1>
 
 			<Form
@@ -89,7 +83,7 @@ const SingupScreen: React.FC<{
 			<ALink routing={() => routing('LoginScreen')}>
 				¿Ya tenes cuenta? Inicia sesión!
 			</ALink>
-		</Flex>
+		</React.Fragment>
 	)
 }
 

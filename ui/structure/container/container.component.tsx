@@ -2,6 +2,8 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import { StrOrNum } from '~/ui/types'
 
+import styles from './container.module.scss'
+
 interface ContainerProps {
 	children: React.ReactNode
 	width?: StrOrNum
@@ -12,15 +14,11 @@ interface ContainerProps {
 
 const Container: React.FC<ContainerProps> = (props) => {
 	return (
-		<div>
+		<div className={styles.container}>
 			{props.children}
 			<style jsx>{`
 				div {
-					width: ${props.width || '100%'};
-					height: ${props.height || '100vh'};
 					background-color: ${props.backgroundColor || 'transparent'};
-					padding-left: 1rem;
-					padding-right: 1rem;
 				}
 			`}</style>
 		</div>
